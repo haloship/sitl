@@ -28,8 +28,8 @@ public class SimListener extends AbstractSimulationListener {
 
 	@Override
 	public void postStep(SimulationStatus status) throws SimulationException {
-		System.out.println(this.portName);
-		byte[] buffer = "Testing testing things just got more interesting\n".getBytes();
+
+		FlightDataBranch data = status.getFlightData();
 
 		try {
 				Thread.sleep(50);
