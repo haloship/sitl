@@ -8,12 +8,12 @@ Repository to hold software-in-the-loop files for the rocket avionics
 sudo apt install socat
 ```
 
-1. Start virtual ports
+2. Start virtual ports
 ```
 sudo socat PTY,link=/dev/ttyUSB98 PTY,link=/dev/ttyUSB99
 
  ```
-1. Elevate user privilege to operate ports
+3. Elevate user privilege to operate ports
 ```
 sudo chmod a+rw /dev/ttyUSB98 && sudo chmod a+rw /dev/ttyUSB99
 ```
