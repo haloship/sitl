@@ -1,0 +1,20 @@
+<project name="Haloship" basedir="." default="build">
+
+    <property name="src.dir" value="${basedir}/src"/>
+    <property name="build.dir" value="${basedir}/build"/>
+    <property name="target_name" value="haloship"/>
+
+    <target name="build">
+        <mkdir dir="${build.dir}"/>
+        <!-- <javac debug="true" srcdir="${src.dir}" destdir="${build.dir}" classpath="OpenRocket.jar" includeantruntime="false" source="1.6" target="1.6"/> -->
+        <javac debug="true" srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false" source="1.6" target="1.6">
+          <classpath>
+                 <fileset dir="lib">
+                    <include name="**/*.jar" />
+                 </fileset>
+           </classpath>
+       </javac>
+      <jar destfile="${target_name}.jar" basedir="${build.dir}"/>
+    </target>
+
+</project>
