@@ -10,5 +10,10 @@ sudo apt install socat
 
 ### Start virtual ports
 ```
-sudo socat PTY,link=/dev/ttyp1 PTY,link=/dev/ttyp2
+sudo socat PTY,link=/dev/ttyUSB98 PTY,link=/dev/ttyUSB99
+
  ```
+### Elevate user privilege to operate ports
+```
+sudo chmod a+rw /dev/ttyUSB98 && sudo chmod a+rw /dev/ttyUSB99
+```
