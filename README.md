@@ -2,9 +2,9 @@
 Repository to hold software-in-the-loop files for the rocket avionics
 
 ### Directory
-1. [Overview] (##overview)
-1. [Working with socat](##working-with-socat)
-1. [Compiling/Usage](##compilation-and-usage)
+1. [Overview](##overview)
+1. [Working with socat](##Working-with-socat)
+1. [Compiling/Usage](##Compilation-and-Usage)
 
 ## Overview 
 
