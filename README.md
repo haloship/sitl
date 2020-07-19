@@ -17,7 +17,10 @@ The OpenRocket extension is meant to provide the simulation environment for your
 
 These values are provided over a serial port (virtual ports included). Commands can be sent back to the simulation to carry out events (chute deployment, airbrake deployment, fin movement). As a result, your flight software controls the actuation of the rocket in the OpenRocket simulation, leading to software-in-the-loop testing.
 
+# Usage
+Coming soon!
 
+# Development 
 ## Working with ```socat```
 
 1. Install
