@@ -1,5 +1,6 @@
 package net.sf.openrocket.sitl;
 
+import net.sf.openrocket.rocketcomponent.RocketComponent;
 import net.sf.openrocket.simulation.SimulationConditions;
 import net.sf.openrocket.simulation.exception.SimulationException;
 import net.sf.openrocket.simulation.extension.AbstractSimulationExtension;
@@ -20,7 +21,11 @@ public class Sim extends AbstractSimulationExtension {
 
 	@Override
 	public void initialize(SimulationConditions conditions) throws SimulationException {
-		conditions.getSimulationListenerList().add(new SimListener(getSelectedPort()));
+		conditions.getSimulationListenerList().add(new SimListener(
+																																getSelectedPort(),
+																																conditions.getRocket(),
+																																getFirstRecoveryDeviceID()
+																															));
 	}
 
 	public String getSelectedPort() {
@@ -29,6 +34,14 @@ public class Sim extends AbstractSimulationExtension {
 
 	public void setSelectedPort(String portName) {
 		 config.put("port", portName);
+	}
+
+	public String getFirstRecoveryDeviceID() {
+		return config.getString("firstRecoveryDeviceID", null);
+	}
+
+	public void setFirstRecoveryDeviceID(String firstRecoveryDeviceID) {
+		config.put("firstRecoveryDeviceID", firstRecoveryDeviceID);
 	}
 
 }

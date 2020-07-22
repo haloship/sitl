@@ -7,7 +7,7 @@
     <target name="build">
         <mkdir dir="${build.dir}"/>
         <!-- <javac debug="true" srcdir="${src.dir}" destdir="${build.dir}" classpath="OpenRocket.jar" includeantruntime="false" source="1.6" target="1.6"/> -->
-        <javac debug="true" srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false" source="1.6" target="1.6">
+        <javac debug="true" srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false" source="1.8" target="1.8">
           <classpath>
                  <fileset dir="lib">
                     <include name="**/*.jar" />
