@@ -6,11 +6,12 @@ Repository to hold software-in-the-loop files for the rocket avionics
 1. [Working with socat](#Working-with-socat)
 1. [Compiling/Usage](#Compilation-and-Usage)
 
-## Overview 
+## Overview
 
 The OpenRocket extension is meant to provide the simulation environment for your flight software. While OpenRocket provides several useful events and values, this extension makes use of the following simple outputs:
 
 * acceleration
+(near-future)
 * velocity
 * world coordinates
 * rotational coordinates
@@ -20,7 +21,7 @@ These values are provided over a serial port (virtual ports included). Commands 
 # Usage
 Coming soon!
 
-# Development 
+# Development
 ## Working with ```socat```
 
 1. Install
@@ -40,7 +41,7 @@ sudo chmod a+rw /dev/ttyUSB98 && sudo chmod a+rw /dev/ttyUSB99
 
 ## Compilation and Usage
 
-1. Change directory to ```ork-extension```
+1. Change directory to ```orksim```
 ```
 cd ork-extension
 ```
