@@ -33,8 +33,10 @@ public class SimListener extends AbstractSimulationListener {
 	private Rocket rocket;
 	private String firstRecoveryDeviceName;
 	private RocketComponent firstRecoveryDevice;
+	private String secondRecoveryDeviceName;
+	private RocketComponent secondRecoveryDevice;
 
-	public SimListener(String portName, Rocket rocket, String firstRecoveryDeviceName) {
+	public SimListener(String portName, Rocket rocket, String firstRecoveryDeviceName, String secondRecoveryDeviceName) {
 		super();
 		this.rocket = rocket;
 		this.componentUtils = new ComponentUtils(this.rocket);
@@ -45,6 +47,20 @@ public class SimListener extends AbstractSimulationListener {
 
 		this.firstRecoveryDeviceName = firstRecoveryDeviceName;
 		this.firstRecoveryDevice = componentUtils.findComponentWithName(this.firstRecoveryDeviceName);
+
+		this.secondRecoveryDeviceName = secondRecoveryDeviceName;
+		this.secondRecoveryDevice = componentUtils.findComponentWithName(this.secondRecoveryDeviceName);
+	}
+
+	private void deployParachute(double time, RocketComponent recoveryDevice) {
+
+	}
+
+	public void endSimulation(SimulationStatus status, SimulationException exception) {
+		try {
+        this.chosenPort.closePort();
+        System.out.println("Closed serial port");
+    } catch (Exception e) { e.printStackTrace(); }
 	}
 
 	@Override
@@ -76,6 +92,7 @@ public class SimListener extends AbstractSimulationListener {
 
 		if (this.bytesRead > 0) {
 			String command = new String(readBuffer).replaceAll("\r", "").replaceAll("\n", "");
+			boolean success = false;
 			switch(command) {
          case "deploy_drogue_chute" :
 				 		System.out.printf("Deploying drogue chute at time: %f\n", status.getSimulationTime());
@@ -83,9 +100,15 @@ public class SimListener extends AbstractSimulationListener {
 																			FlightEvent.Type.RECOVERY_DEVICE_DEPLOYMENT,
 																			status.getSimulationTime(),
 																			this.firstRecoveryDevice));
-						System.out.println(this.firstRecoveryDevice);
+						System.out.printf("Deploy %b\n", success);
             break;
          case "deploy_main_chute" :
+					 System.out.printf("Deploying main chute at time: %f\n", status.getSimulationTime());
+					 status.getEventQueue().add(new FlightEvent(
+																		 FlightEvent.Type.RECOVERY_DEVICE_DEPLOYMENT,
+																		 status.getSimulationTime(),
+																		 this.secondRecoveryDevice));
+					 System.out.printf("Deploy %b\n", success);
 						break;
          default :
 						break;

@@ -51,6 +51,10 @@ public class SimConfigurator extends AbstractSwingSimulationExtensionConfigurato
 		extension.setFirstRecoveryDeviceID(firstRecoveryDeviceID);
 	}
 
+	private void setSecondRecoveryDeviceID(String secondRecoveryDeviceID) {
+		extension.setSecondRecoveryDeviceID(secondRecoveryDeviceID);
+	}
+
 	@Override
 	protected JComponent getConfigurationComponent(Sim extension, Simulation simulation, JPanel panel) {
 
@@ -104,14 +108,23 @@ public class SimConfigurator extends AbstractSwingSimulationExtensionConfigurato
 
 		panel.add(firstRecoveryDeviceSelector, "w 75, wrap");
 
+		panel.add(new JLabel("Second recovery component:"));
 
-		//
-		// panel.add(new JLabel("Second recovery component:"));
-		// JComboBox<String> secondRecoveryDeviceSelector = new JComboBox<String>();
-		// for (int i = 0; i < rocketComponents.size(); i++) {
-		// 	secondRecoveryDeviceSelector.addItem(rocketComponents.get(i).getName());
-		// }
-		// panel.add(secondRecoveryDeviceSelector, "w 75, wrap");
+		JComboBox<RocketComponent> secondRecoveryDeviceSelector = new JComboBox();
+		for (int i = 0; i < rocketComponents.size(); i++) {
+			secondRecoveryDeviceSelector.addItem(rocketComponents.get(i));
+		}
+
+		secondRecoveryDeviceSelector.addActionListener(new ActionListener() {
+	 			@Override
+	 			public void actionPerformed(ActionEvent e) {
+					RocketComponent secondRecoveryDevice = (RocketComponent)secondRecoveryDeviceSelector.getSelectedItem();
+					// String firstRecoveryDeviceID = firstRecoveryDevice.getID();
+	 				setSecondRecoveryDeviceID(secondRecoveryDevice.getName());
+	 			}
+	 	});
+
+		panel.add(secondRecoveryDeviceSelector, "w 75, wrap");
 
 		return panel;
 	}

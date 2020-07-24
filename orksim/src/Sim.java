@@ -24,7 +24,8 @@ public class Sim extends AbstractSimulationExtension {
 		conditions.getSimulationListenerList().add(new SimListener(
 																																getSelectedPort(),
 																																conditions.getRocket(),
-																																getFirstRecoveryDeviceID()
+																																getFirstRecoveryDeviceID(),
+																																getSecondRecoveryDeviceID()
 																															));
 	}
 
@@ -42,6 +43,14 @@ public class Sim extends AbstractSimulationExtension {
 
 	public void setFirstRecoveryDeviceID(String firstRecoveryDeviceID) {
 		config.put("firstRecoveryDeviceID", firstRecoveryDeviceID);
+	}
+
+	public String getSecondRecoveryDeviceID() {
+		return config.getString("secondRecoveryDeviceID", null);
+	}
+
+	public void setSecondRecoveryDeviceID(String secondRecoveryDeviceID) {
+		config.put("secondRecoveryDeviceID", secondRecoveryDeviceID);
 	}
 
 }
