@@ -11,6 +11,7 @@ Repository to hold software-in-the-loop files for the rocket avionics
 The OpenRocket extension is meant to provide the simulation environment for your flight software. While OpenRocket provides several useful events and values, this extension makes use of the following simple outputs:
 
 * acceleration
+
 (near-future)
 * velocity
 * world coordinates
